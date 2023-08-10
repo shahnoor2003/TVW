@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://codepen.io/jackcohle/pen/mjryyq">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+    <link rel='stylesheet' href='https://cdn.materialdesignicons.com/2.1.99/css/materialdesignicons.min.css'>
+    
+</head>
+<nav>
+    <div class="nav-1"><img src="logo.png" alt=""><h1>ticketvault</h1></div>
+    <div class="nav-2">
+        <ul class="none" id="ul">
+            <a href="">home</a>
+            <a href="">organizers</a>
+            <a href="">events</a>
+            <a href="">create events</a>
+        </ul>
+   </div>
+  
+    <div class="nav-3" > <div ><button class="nav-btn">Login</button></div></div></div>
+    <div class="nav-4"><img src="nav-icon.png" alt="" id="nav-icon"></div>
+</nav>   
+ <div class="sidebar-navigation">
+  <ul>
+     <li><a href="#">home</a></li>
+     <li><a href="#">Organizer</a></li>
+      <li><a href="#">Create Event<em class="mdi mdi-chevron-down"></em></a>
+          <ul>
+              <li><a href="#">Event1<em class="mdi mdi-chevron-down"></em></a>
+              <ul>
+                <a href="">Event details</a> 
+                <a href="">hold seats</a> 
+                <a href="">manage orders</a> 
+                <a href="">sales report</a> 
+                <a href="">scan tickets</a> 
+                <a href="">seating charts</a> 
+                <a href="">sell tickets</a>
+                <a href="">ticket prices</a>
+              </ul>
+              </li>
+          </ul>
+      </li>
+     
+      </li>
+      <li><a href="#">Venue</a></li>
+      <li><a href="#">Reports</a></li>
+      <li><a href="#">Setting</a></li>
+  </ul>
+</div>
+<body>
+
+     <main>
+        <div class="main-grid">
+            <div class="grid-1">
+                <a href="">dashbord</a>
+                <a href="">create event</a>
+                 <details>
+                        <summary class="sum" >Event</summary><br>
+                        <details class="in-sum">
+                            <summary>Event1</summary> <br>
+                        <a href="">Event details</a> <br>
+                        <a href="">hold seats</a> <br>
+                        <a href="">sell tickets</a> <br>
+                        <a href="">scan tickets</a> <br>
+                        <a href="">attendes</a> <br>
+                        <a href="">sales report</a> <br>
+                        <a href="">manage orders</a> <br>
+                        <a href="">seating charts</a> <br>
+                        <a href="">ticket prices</a> <br>
+                        </details>
+                </details>
+                <a href="">reports</a>
+                <a href="">Setting</a>
+                <a href="">venue </a> <br> <br>
+                <a>later add: <br> sms compains </a>
+            </div>
+            <div class="grid-2" style="padding:4px 30px;padding-bottom: 10px;">
+                <div class="prev tac " ><img height="25" src="previous.png" alt=""><p> EVENT1 TITLE <br>
+                    <span >hold seats</span></p> <img src="next.png" alt="" height="25"></div>
+                   <hr color="yellow" style="margin-top: 3px;"> <br>
+               <p  style=" background-color: black;color: white;margin:auto;padding: 10px 20px;border-radius: 25px;">Holding seats will mark them as <span style="text-decoration: underline;">unavailable for purchase</span> by you or your customers.  <br> <br> <br>
+                To hold seats first select the seats you would like to hold. Then click “Mark Seats on Hold”.</p>
+                <div class="dfl" style="width: 100%; height:500px ;border-radius: 25px;margin: auto; margin-top: 15px; background-color: white;color: grey;"><p>[ EMBED SEATING CHART HERE (EVENT MANAGER )]</p></div>
+                <div  style=" display: flex; justify-content: end; margin-top: 20px;"><button class="tik-btn-1" style="margin-right: 20px;width: 200px;" >Mark Seat On Hold</button></div>
+            </div>
+            
+         </div>
+     </main>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script id="rendered-js" >
+$(function () {
+var $ul = $('.sidebar-navigation > ul');
+
+$ul.find('li a').click(function (e) {
+var $li = $(this).parent();
+
+if ($li.find('ul').length > 0) {
+e.preventDefault();
+
+if ($li.hasClass('selected')) {
+  $li.removeClass('selected').find('li').removeClass('selected');
+  $li.find('ul').slideUp(400);
+  $li.find('a em').removeClass('mdi-flip-v');
+} else {
+
+  if ($li.parents('li.selected').length == 0) {
+    $ul.find('li').removeClass('selected');
+    $ul.find('ul').slideUp(400);
+    $ul.find('li a em').removeClass('mdi-flip-v');
+  } else {
+    $li.parent().find('li').removeClass('selected');
+    $li.parent().find('> li ul').slideUp(400);
+    $li.parent().find('> li a em').removeClass('mdi-flip-v');
+  }
+
+  $li.addClass('selected');
+  $li.find('>ul').slideDown(400);
+  $li.find('>a>em').addClass('mdi-flip-v');
+}
+}
+});
+
+
+$('.sidebar-navigation > ul ul').each(function (i) {
+if ($(this).find('>li>ul').length > 0) {
+var paddingLeft = $(this).parent().parent().find('>li>a').css('padding-left');
+var pIntPLeft = parseInt(paddingLeft);
+var result = pIntPLeft + 20;
+
+$(this).find('>li>a').css('padding-left', result);
+} else {
+var paddingLeft = $(this).parent().parent().find('>li>a').css('padding-left');
+var pIntPLeft = parseInt(paddingLeft);
+var result = pIntPLeft + 20;
+
+$(this).find('>li>a').css('padding-left', result).parent().addClass('selected--last');
+}
+});
+
+var t = ' li > ul ';
+for (var i = 1; i <= 10; i++) {if (window.CP.shouldStopExecution(0)) break;
+$('.sidebar-navigation > ul > ' + t.repeat(i)).addClass('subMenuColor' + i);
+}window.CP.exitedLoop(0);
+
+var activeLi = $('li.selected');
+if (activeLi.length) {
+opener(activeLi);
+}
+
+function opener(li) {
+var ul = li.closest('ul');
+if (ul.length) {
+
+li.addClass('selected');
+ul.addClass('open');
+li.find('>a>em').addClass('mdi-flip-v');
+
+if (ul.closest('li').length) {
+  opener(ul.closest('li'));
+} else {
+  return false;
+}
+
+}
+}
+
+});
+</script>
+<script src="script.js"></script>
+</html>
